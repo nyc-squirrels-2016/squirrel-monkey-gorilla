@@ -7,7 +7,11 @@ erb :'surveys/all'
 end
 
 get '/surveys/new' do
-  erb :'/surveys/new'
+  if logged_in?
+    erb :'/surveys/new'
+  else
+    @errors = ["Must be logged in to create a survey"]
+    erb :'/surveys'
 end
 
 post '/surveys' do
