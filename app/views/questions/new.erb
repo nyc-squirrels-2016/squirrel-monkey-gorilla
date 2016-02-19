@@ -1,0 +1,13 @@
+<h1> New question for: <%= @survey.title %> </h1>
+
+<form id = "new_question" method ="post" action = "/questions/<%=@survey.id%>">
+  <input type = "text" name= "question" placeholder = "Question">
+  <p><input type = "text" name= "choice1" placeholder = "choice 1"></p>
+  <p><input type = "text" name= "choice2" placeholder = "choice 2"></p>
+  <p><input type = "text" name= "choice3" placeholder = "choice 3"></p>
+  <p><input type = "text" name= "choice4" placeholder = "choice 4"></p>
+  <p><input type = "submit" value="Create question">
+</form>
+<form id = "done_making_survey" method = "post" action ="/questions/<%=@survey.id%>/done">
+  <p><input type = "submit" value="Create survey!">
+</form></p>

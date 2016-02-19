@@ -1,0 +1,18 @@
+1. page w/ form to make new survey.
+   - a page to make title
+   - a page to make a question and choices.
+      - when user clicks 'next question' it'll save question w/ choices
+      and take user back to that page.
+      - when user clicks 'save survey', they get taken back to list of all surveys
+2. routes
+  show all surveys - - get - - '/surveys'
+  form to make new survey - - get - - '/surveys/new'
+  create the title of survey - - post - - '/surveys/'
+  create a question w/ choices - - post - - 'questions/:survey_id/new'
+  save survey - - post - - '/questions/:survey_id/done'
+
+
+3. a page that lists all surveys
+
+
+https://trello.com/b/hBsyLd2k/smg
