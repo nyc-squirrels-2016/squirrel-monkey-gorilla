@@ -12,6 +12,7 @@ get '/surveys/new' do
   else
     @errors = ["Must be logged in to create a survey"]
     erb :'/surveys'
+  end
 end
 
 post '/surveys' do
