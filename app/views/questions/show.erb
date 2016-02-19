@@ -1,0 +1,6 @@
+<%=@question.body%>
+<form method = "post" action = "/responses/someotherstuff">
+  <%@question.choices.each do |choice| %>
+  <%
+  <input type="radio" name="<%=choice.id%>" value="male" checked> Male<br>
+<%@ques
