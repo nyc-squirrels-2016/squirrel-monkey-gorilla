@@ -14,6 +14,11 @@ post '/users/new' do
   end
 end
 
+get '/users/:id' do
+  @user = User.find_by(id: params[:id])
+  erb :'users/show'
+end
+
 # delete '/users/:id' do
 #   delete a user
 # end
