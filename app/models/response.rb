@@ -1,3 +1,6 @@
 class Response < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :survey
+  belongs_to :question
+  belongs_to :taker, class_name: "User"
+  belongs_to :choice
 end
