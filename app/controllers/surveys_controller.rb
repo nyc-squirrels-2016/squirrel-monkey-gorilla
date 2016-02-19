@@ -3,7 +3,7 @@
 get '/surveys' do
 
 @surveys = Survey.all
-erb :'/'
+erb :'surveys/all'
 end
 
 get '/surveys/new' do
