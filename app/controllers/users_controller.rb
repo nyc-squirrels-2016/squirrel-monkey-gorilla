@@ -15,8 +15,13 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  @user = User.find_by(id: params[:id])
-  erb :'users/show'
+  if logged_in? && current_user.id == params[:id]
+    @user = User.find_by(id: params[:id])
+    erb :'users/show'
+  else
+    @errors = ["You can only view your own profile"]
+    erb :'index'
+  end
 end
 
 # delete '/users/:id' do
