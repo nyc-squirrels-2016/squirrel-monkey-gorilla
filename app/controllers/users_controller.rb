@@ -15,7 +15,7 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  if logged_in? && current_user.id == params[:id]
+  if logged_in? && current_user.id == params[:id].to_i
     @user = User.find_by(id: params[:id])
     erb :'users/show'
   else
