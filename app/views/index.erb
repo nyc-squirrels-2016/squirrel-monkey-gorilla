@@ -3,4 +3,9 @@
 <p> Take some surveys. </p>
 
 <p><a href = "/surveys">Take surveys</a></p>
+<!-- Do we want to make these lower priority headers instead of paragraphs if this is all that's on the page? -->
 <p><a href = "/surveys/new">Make a survey</a></p>
+<% if logged_in? %>
+  <p><a href="/users/<%= current_user.id %>">View Your Profile</a></p>
+<% end %>
+<%= erb :'_errors' %>
