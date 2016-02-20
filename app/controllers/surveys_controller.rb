@@ -31,3 +31,11 @@ get '/surveys/:survey_id' do
 erb :"/questions/show"
 
 end
+
+get '/surveys/:survey_id/stats' do
+
+  @survey = Survey.find(params[:survey_id])
+
+  erb :"/surveys/stats"
+
+end
