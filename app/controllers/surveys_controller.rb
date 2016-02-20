@@ -27,6 +27,7 @@ end
 
 get '/surveys/:survey_id' do
   @survey = Survey.find(params[:survey_id])
-erb :"/surveys/show"
+  @question = @survey.questions.first
+erb :"/questions/show"
 
 end
