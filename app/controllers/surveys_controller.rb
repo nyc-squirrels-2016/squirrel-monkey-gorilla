@@ -8,12 +8,10 @@ end
 
 get '/surveys/new' do
   if logged_in?
-    if request.xhr?
-      erb :'/surveys/_new'
-    else
-    end
-    # @display_title = true
-    # @display_question = false
+    # if request.xhr?
+    #   erb :'/surveys/_new'
+    # else
+    # end
     erb :'/surveys/new'
   else
     @errors = ["Must be logged in to create a survey"]
