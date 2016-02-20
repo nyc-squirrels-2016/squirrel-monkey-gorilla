@@ -6,7 +6,7 @@ post '/answers' do
 
   Answer.create(taker_id: current_user.id, choice_id: params[:choice], question_id: question.id, survey_id: survey.id)
 
-  if survey.answers.size == survey.questions.size
+  if question == survey.questions.last 
     redirect "/surveys/#{survey.id}/stats"
   else
     @question = Question.find(question.id+1)
