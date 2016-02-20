@@ -8,11 +8,21 @@ post '/answers' do
   Answer.create(taker_id: current_user.id, choice_id: params[:choice], question_id: this_question.id, survey_id: survey.id)
 
   if this_question == survey.questions.last 
-    redirect "/surveys/#{survey.id}/stats"
+    if request.xhr?
+      @survey = survey
+      erb :"/surveys/stats", layout: false
+    else
+     redirect "/surveys/#{survey.id}/stats"
+    end
   else
     # @question = Question.find(question.id+1)
     index = questions.find_index(this_question)+1
     @question = questions[index]
-    erb :"questions/show"
+    if request.xhr?
+      erb :"questions/_show", layout: false
+    else
+      erb :"questions/show"
+    end
+  
   end
 end
