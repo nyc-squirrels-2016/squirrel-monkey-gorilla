@@ -8,7 +8,7 @@ $(document).ready(function() {
   		data: $(this).serialize()
   	});
   	request.done(function(response) {
-  		$("#new_question").reset()
+  		$("#new_question").trigger("reset")
   	});
   });
 
