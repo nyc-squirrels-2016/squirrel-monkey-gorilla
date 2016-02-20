@@ -1,4 +1,4 @@
-class Response < ActiveRecord::Base
+class Answer < ActiveRecord::Base
   belongs_to :survey
   belongs_to :question
   belongs_to :taker, class_name: "User"

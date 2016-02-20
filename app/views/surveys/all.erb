@@ -1,2 +1,5 @@
-<p> All surveys will eventually go here. </p>
+
+<%@surveys.each do |survey| %>
+<p><a href="/surveys/<%=survey.id%>"><%=survey.title %></a> | <a href="/surveys/<%=survey.id%>/stats">See results</a></p>
+<%end%>
 
