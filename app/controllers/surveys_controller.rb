@@ -8,15 +8,19 @@ end
 
 get '/surveys/new' do
   if logged_in?
+    # if request.xhr?
+    #   erb :'/surveys/_new'
+    # else
+    # end
     erb :'/surveys/new'
   else
     @errors = ["Must be logged in to create a survey"]
-    erb :'/surveys'
+    erb :'index'
   end
 end
 
 post '/surveys' do
-  @survey = Survey.new(title: params[:title])
+  @survey = Survey.new(title: params[:title], author_id: current_user.id)
   if @survey.save
     erb :"/questions/new"
   else
