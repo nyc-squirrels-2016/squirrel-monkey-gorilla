@@ -10,7 +10,12 @@ post "/questions/:survey_id" do
     erb :"/questions/new"
   else
     @errors = question.errors.full_messages
-    erb :"/questions/new"
+    if request.xhr?
+      status 412
+      return @errors
+    else
+      erb :"/questions/new"
+    end
   end
 end
 

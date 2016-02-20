@@ -10,6 +10,9 @@ $(document).ready(function() {
   	request.done(function(response) {
   		$("#new_question").trigger("reset")
   	});
+  	request.fail(function(response) {
+  		$("#error_box").text(response.responseText)
+  	});
   });
   $("body").on("submit", "#new_answer_form", function(e) {
   		// console.log("yo")
