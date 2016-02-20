@@ -1,0 +1,12 @@
+
+<h1><%=@survey.title%> results:</h1>
+<%@survey.questions.each do |question| %>
+
+  <p class = "stats_question"><%=question.body%></p>
+  <%question.choices.each do |choice| %>
+  <p><%=choice.body%> <%choice.answers.each  do |ans|  %>
+    <span class = "bar">_</span>
+    <%end%></p>
+  <%end%>
+
+<%end%>
