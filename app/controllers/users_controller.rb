@@ -24,6 +24,17 @@ get '/users/:id' do
   end
 end
 
+get '/users/:id/surveys-written' do
+  @surveys = Survey.where(author_id: params[:id])
+  @user = User.find(params[:id])
+  @state = "written"
+  erb :'users/select_surveys'
+end
+
+get '/users/:id/surveys-taken' do
+  
+end
+
 # delete '/users/:id' do
 #   delete a user
 # end

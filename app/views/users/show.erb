@@ -1,4 +1,4 @@
 <h2><%= @user.username %></h2>
 
-<h3><a href="##placeholder##">Surveys <%= @user.username %> has written</a></h3>
-<h3><a href="##placeholder##">Surveys <%= @user.username %> has taken</a></h3>
+<h3><a href="/users/<%= @user.id %>/surveys-written">Surveys <%= @user.username %> has written</a></h3>
+<h3><a href="/users/<%= @user.id %>/surveys-taken">Surveys <%= @user.username %> has taken</a></h3>
