@@ -1,3 +1,6 @@
 <h2>Surveys <%= @state %> by <%= @user.username %></h2>
-
+<% if @surveys.length >0 %>
 <%= erb :'/surveys/all' %>
+<% else %>
+<p><%= @user.username %> has not <%= @state %> any surveys.</p>
+<% end %>
