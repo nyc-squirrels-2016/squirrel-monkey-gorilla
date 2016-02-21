@@ -44,7 +44,4 @@ def make_survey_array(id)
     Survey.find(answer.survey_id)
   end
 end
-# delete '/users/:id' do
-#   delete a user
-# end
 
