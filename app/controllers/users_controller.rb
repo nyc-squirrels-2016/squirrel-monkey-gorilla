@@ -15,11 +15,11 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  if logged_in? && current_user.id == params[:id].to_i
+  if logged_in?
     @user = User.find_by(id: params[:id])
     erb :'users/show'
   else
-    @errors = ["You can only view your own profile"]
+    @errors = ["You must be logged in to view a profile"]
     erb :'index'
   end
 end
