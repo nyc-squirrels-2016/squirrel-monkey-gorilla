@@ -32,9 +32,18 @@ get '/users/:id/surveys-written' do
 end
 
 get '/users/:id/surveys-taken' do
-  
+  @surveys = make_survey_array(params[:id])
+  @user = User.find(params[:id])
+  @state = "taken"
+  erb :'users/select_surveys'
 end
 
+def make_survey_array(id)
+  answer_array = Answer.select("survey_id").distinct.where(taker_id: id)
+  answer_array.map do |answer|
+    Survey.find(answer.survey_id)
+  end
+end
 # delete '/users/:id' do
 #   delete a user
 # end
