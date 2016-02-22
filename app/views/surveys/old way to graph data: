@@ -1,0 +1,15 @@
+
+<div id = "main_stats">
+<h1><%=@survey.title%> results:</h1>
+<%@survey.questions.each do |question| %>
+  <p class = "stats_question"><%=question.body%></p>
+  <form class="graph" method = "POST" action = "/surveys/<%=@survey.id%>/graph/<%=question.id%>">
+  <p><input type="submit" value = "Graph it!"></form>
+    <div class="container" style="width:100%; height:400px;"></div>
+  <%question.choices.each do |choice| %>
+    <p><%=choice.body%> <%choice.answers.each  do |ans|  %>
+      <span class = "bar">_</span>
+    <%end%></p>
+  <%end%>
+
+<%end%>

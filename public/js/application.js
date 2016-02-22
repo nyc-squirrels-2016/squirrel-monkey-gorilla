@@ -17,7 +17,7 @@ $(document).ready(function() {
   $("body").on("submit", "#new_answer_form", function(e) {
   		// console.log("yo")
   		e.preventDefault();
-  		console.log("ajax is working")
+  		//console.log("ajax is working")
   		var request = $.ajax({
   			type: "POST",
   			url: e.target.action,
@@ -28,15 +28,44 @@ $(document).ready(function() {
   			$("#answer_container").html(response);
   		});
   });
+  $(".container").hide()
+  $("body").on("submit", "#graph", function(e) {
+    e.preventDefault();
+    var request = $.ajax ({
+      type: "POST",
+      url: e.target.action,
+      dataType: 'json'
+    });
+    request.done(function(response){
+      $("#main_stats").append(response);
+      $(".container").toggle();
+      $(function () {
+        $('.container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Question'
+            },
+            xAxis: {
+                categories: response.x
+            },
+            yAxis: {
+                title: {
+                    text: 'Responded'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: response.y
+            }]
+        });// closes highcharts inner
+      });  //closes highcharts outer
+    });
+  });
 
 
 });
-  
 
 
 
-
-
-
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
