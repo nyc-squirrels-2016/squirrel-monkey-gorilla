@@ -15,16 +15,33 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  if logged_in? && current_user.id == params[:id].to_i
+  if logged_in?
     @user = User.find_by(id: params[:id])
     erb :'users/show'
   else
-    @errors = ["You can only view your own profile"]
+    @errors = ["You must be logged in to view a profile"]
     erb :'index'
   end
 end
 
-# delete '/users/:id' do
-#   delete a user
-# end
+get '/users/:id/surveys-written' do
+  @surveys = Survey.where(author_id: params[:id])
+  @user = User.find(params[:id])
+  @state = "written"
+  erb :'users/select_surveys'
+end
+
+get '/users/:id/surveys-taken' do
+  @surveys = make_survey_array(params[:id])
+  @user = User.find(params[:id])
+  @state = "taken"
+  erb :'users/select_surveys'
+end
+
+def make_survey_array(id)
+  answer_array = Answer.select("survey_id").distinct.where(taker_id: id)
+  answer_array.map do |answer|
+    Survey.find(answer.survey_id)
+  end
+end
 

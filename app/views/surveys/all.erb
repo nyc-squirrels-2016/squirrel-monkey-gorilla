@@ -1,5 +1,5 @@
 
 <%@surveys.each do |survey| %>
-<p><a href="/surveys/<%=survey.id%>"><%=survey.title %></a> | <a href="/surveys/<%=survey.id%>/stats">See results</a></p>
+<p><a href="/surveys/<%=survey.id%>"><%=survey.title %></a> by <a href="/users/<%=survey.author_id%>"><%=survey.author.username%></a> | <a href="/surveys/<%=survey.id%>/stats">See results</a></p>
 <%end%>
 
