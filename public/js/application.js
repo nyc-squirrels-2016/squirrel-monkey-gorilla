@@ -56,6 +56,7 @@ $(document).ready(function() {
                 }
             },
             series: [{
+                name: 'All responders to survey',
                 data: response.y
             }]
         });// closes highcharts inner
