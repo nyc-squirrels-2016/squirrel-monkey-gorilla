@@ -1,0 +1,34 @@
+NEW WAY
+<h1><%=@survey.title%> results:</h1>
+
+<p>Choose question: </p>
+
+<form id= "graph" method= "post" action = "/surveys/graph">
+
+<select name = "question">
+<%@survey.questions.each do |question| %>
+<option value="<%=question.id%>"><%=question.body%></option>
+<%end%>
+</select>
+<input type="submit" value = "Graph it">
+</form>
+
+<div class="container" style="width:100%; height:400px;"></div>
+
+OTHER WAY:
+
+<h1><%=@survey.title%> results:</h1>
+
+<p>Choose question: </p>
+
+<form id= "graph" method= "post" action = "/surveys/graph">
+
+<select name = "question">
+<%@survey.questions.each do |question| %>
+<option value="<%=question.id%>"><%=question.body%></option>
+<%end%>
+</select>
+<input type="submit" value = "Graph it">
+</form>
+
+<div class="container" style="width:100%; height:400px;"></div>
