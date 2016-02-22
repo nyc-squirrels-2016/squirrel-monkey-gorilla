@@ -49,11 +49,11 @@ get '/surveys/:survey_id/stats' do
 
 end
 
-post '/surveys/graph' do
+post '/surveys/graph/:question_id' do
 
   x= []
   y = []
-  question = Question.find(params[:question])
+  question = Question.find(params[:question_id])
   question.choices.each {|c| x << c.body }
   question.choices.each {|c| y << Answer.where(choice_id: c.id).count}
   { x: x, y: y }.to_json

@@ -56,7 +56,6 @@ $(document).ready(function() {
                 }
             },
             series: [{
-                name: 'Jane',
                 data: response.y
             }]
         });// closes highcharts inner

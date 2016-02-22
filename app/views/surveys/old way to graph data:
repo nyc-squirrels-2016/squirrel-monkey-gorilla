@@ -1,15 +1,34 @@
-
-<div id = "main_stats">
+NEW WAY
 <h1><%=@survey.title%> results:</h1>
-<%@survey.questions.each do |question| %>
-  <p class = "stats_question"><%=question.body%></p>
-  <form class="graph" method = "POST" action = "/surveys/<%=@survey.id%>/graph/<%=question.id%>">
-  <p><input type="submit" value = "Graph it!"></form>
-    <div class="container" style="width:100%; height:400px;"></div>
-  <%question.choices.each do |choice| %>
-    <p><%=choice.body%> <%choice.answers.each  do |ans|  %>
-      <span class = "bar">_</span>
-    <%end%></p>
-  <%end%>
 
+<p>Choose question: </p>
+
+<form id= "graph" method= "post" action = "/surveys/graph">
+
+<select name = "question">
+<%@survey.questions.each do |question| %>
+<option value="<%=question.id%>"><%=question.body%></option>
 <%end%>
+</select>
+<input type="submit" value = "Graph it">
+</form>
+
+<div class="container" style="width:100%; height:400px;"></div>
+
+OTHER WAY:
+
+<h1><%=@survey.title%> results:</h1>
+
+<p>Choose question: </p>
+
+<form id= "graph" method= "post" action = "/surveys/graph">
+
+<select name = "question">
+<%@survey.questions.each do |question| %>
+<option value="<%=question.id%>"><%=question.body%></option>
+<%end%>
+</select>
+<input type="submit" value = "Graph it">
+</form>
+
+<div class="container" style="width:100%; height:400px;"></div>

@@ -1,19 +1,16 @@
-
 <h1><%=@survey.title%> results:</h1>
 
-<p>Select question: </p>
-
-<form id= "graph" method= "post" action = "/surveys/graph">
-
-<select name = "question">
+<p>Choose question: </p>
+<p>
 <%@survey.questions.each do |question| %>
-<option value="<%=question.id%>"><%=question.body%></option>
-<%end%>
-</select>
+
+  <form id= "graph" method= "post" action = "/surveys/graph/<%=question.id%>">
+
+<%=question.body%>
 <input type="submit" value = "Graph it">
 </form>
+</p>
+<%end%>
+
 
 <div class="container" style="width:100%; height:400px;"></div>
-
-
-
