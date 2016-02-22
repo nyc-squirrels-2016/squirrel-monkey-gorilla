@@ -26,9 +26,18 @@ post '/surveys' do
 end
 
 get '/surveys/:survey_id' do
+  @surveys = Survey.all
   @survey = Survey.find(params[:survey_id])
+  if @survey.author_id == current_user.id
+    @errors = ["You can't take your own survey!"]
+    erb :'/surveys/all'
+  elsif Answer.find_by(survey_id: @survey.id, taker_id: current_user.id)
+    @errors = ["You've already taken that survey."]
+    erb :'/surveys/all'
+  else
   @question = @survey.questions.first
-erb :"/questions/show"
+  erb :"/questions/show"
+  end
 
 end
 
